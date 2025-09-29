@@ -1,0 +1,21 @@
+function hasTwoCubeSums(n) {
+ let count = 0;
+    const max = Math.floor(Math.cbrt(n)) + 1;
+    
+    for (let a = 1; a < max; a++) {
+        const a3 = a * a * a;
+        if (a3 > n) continue;
+        
+        for (let b = a + 1; b < max; b++) {
+            const b3 = b * b * b;
+            const sum = a3 + b3;
+            
+            if (sum > n) break;
+            if (sum === n) {
+                count++;
+                if (count === 2) return true;
+            }
+        }
+    }
+    return false;
+}
