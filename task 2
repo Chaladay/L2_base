@@ -1,0 +1,16 @@
+function ipv4Parser(ip, mask){
+    const ipadres= ip.split('.').map(Number);
+    const subnetmask = mask.split('.').map(Number);
+    const n= [];
+    for (let i = 0; i < 4; i++) {
+        n.push(ipadres[i] & subnetmask[i]);
+    }
+    const host = [];
+    for (let i = 0; i < 4; i++) {
+        host.push(ipadres[i] & ~subnetmask[i]);
+    }
+    return [
+        n.join('.'),
+        host.join('.')
+    ];
+}
