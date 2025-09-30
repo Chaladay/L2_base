@@ -1,0 +1,20 @@
+function primeFactors(n){
+   let result = "";
+    let del = 2;
+    while (n > 1) {
+        let count = 0;
+        while (n % del === 0) {
+            count++;
+            n = n / del;
+        }
+        if (count > 0) {
+            if (count === 1) {
+                result += `(${del})`;
+            } else {
+                result += `(${del}**${count})`;
+            }
+        }
+        del++;
+    }
+ return result;
+}
